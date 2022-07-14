@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PatientRegistriationSystem.DTOs;
 using PatientRegistriationSystem.Entities;
+using PatientRegistriationSystem.Entities.Concrete;
 using System.Net;
 
 namespace PatientRegistriationSystem.Controllers
