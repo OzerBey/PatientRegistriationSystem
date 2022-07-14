@@ -1,16 +1,20 @@
-﻿using PatientRegistriationSystem.Entities.Concrete;
+﻿using System;
+using System.Collections.Generic;
+using PatientRegistriationSystem.Entities.Abstract;
 
-namespace PatientRegistriationSystem.DTOs
+#nullable disable
+
+namespace PatientRegistriationSystem.Entities.Concrete
 {
-    public class EmployeeDto
+    public partial class Employee : IEntity
     {
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
-        public EmployeeDto()
-#pragma warning restore CS8618 // Non-nullable field must contain a non-null value when exiting constructor. Consider declaring as nullable.
+        public Employee()
         {
             Doctors = new HashSet<Doctor>();
             Officers = new HashSet<Officer>();
         }
+
+        public int Id { get; set; }
         public int AddressId { get; set; }
         public int NationalityId { get; set; }
         public string Name { get; set; }
