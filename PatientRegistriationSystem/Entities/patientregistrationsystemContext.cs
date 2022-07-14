@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PatientRegistriationSystem.Entities.Concrete;
 
 #nullable disable
 
