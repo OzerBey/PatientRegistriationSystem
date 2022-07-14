@@ -21,11 +21,11 @@ namespace PatientRegistriationSystem.Controllers
         [HttpPost("AddCity")]
         public async Task<HttpStatusCode> Add(CityDto cityDto)
         {
-            var entity = new Employee()
+            var entity = new City()
             {
-         
+                Name = cityDto.Name
             };
-            _context.Employees.Add(entity);
+            _context.Cities.Add(entity);
             await _context.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
