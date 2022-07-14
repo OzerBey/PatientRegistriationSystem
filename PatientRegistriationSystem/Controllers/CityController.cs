@@ -29,11 +29,61 @@ namespace PatientRegistriationSystem.Controllers
             await _context.SaveChangesAsync();
             return HttpStatusCode.Created;
         }
-        // GET: api/City
+
+        //get city by id
+        [HttpGet("GetCityById")]
+        public async Task<ActionResult<City>> GetCityById(int Id)
+        {
+            City city = await _context.Cities.Select(s => new City
+            {
+                Id = s.Id,
+                Name = s.Name
+            }).FirstOrDefaultAsync(s => s.Id == Id);
+            if (city == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return city;
+            }
+        }
+
+        // getAll: api/City
         [HttpGet("getAllCities")]
         public async Task<ActionResult<IEnumerable<City>>> Get()
         {
             return await _context.Cities.ToListAsync();
+        }
+        //update city
+        [HttpPut("UpdateCity")]
+        public async Task<ActionResult<City>> UpdateCity(City city)
+        {
+            var entity = await _context.Cities.FirstOrDefaultAsync(s => s.Id == city.Id);
+            if (entity == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                entity.Name = city.Name;
+                await _context.SaveChangesAsync();
+                return entity;
+            }
+        }
+
+        //delete city
+        [HttpDelete("DeleteUser/{Id}")]
+        public async Task<HttpStatusCode> DeleteCity(int Id)
+        {
+            var entity = new City()
+            {
+                Id = Id
+            };
+            _context.Cities.Attach(entity);
+            _context.Cities.Remove(entity);
+            await _context.SaveChangesAsync();
+            return HttpStatusCode.OK;
         }
 
 
