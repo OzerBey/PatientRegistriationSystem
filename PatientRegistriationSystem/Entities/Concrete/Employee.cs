@@ -8,6 +8,7 @@ namespace PatientRegistriationSystem.Entities.Concrete
 {
     public partial class Employee : IEntity
     {
+
         public Employee()
         {
             Doctors = new HashSet<Doctor>();
