@@ -70,6 +70,31 @@ namespace PatientRegistriationSystem.Controllers
             }
         }
 
+        //get all doctors inner join
+        [HttpGet("GetAllDoctorsInnerJoin")]
+        public Task<ActionResult<List<DoctorDto>>> GetAllDoctorsInnerJoin()
+        {
+
+            var doctor = (from doc in _context.Doctors
+                          join emp in _context.Employees
+                          on doc.EmployeeId equals emp.Id
+                          select new
+                          {
+                              Id = doc.Id,
+                              EmployeeId = doc.EmployeeId,
+                              AddressId = emp.AddressId,
+                              NationalityId = emp.NationalityId,
+                              Name = emp.Name,
+                              PhotoId = emp.PhotoId,
+                              PhoneNumber = emp.PhoneNumber,
+                              DateOfBirth = emp.DateOfBirth
+                          });
+            return (Task<ActionResult<List<DoctorDto>>>)doctor;
+
+
+
+        }
+
         //update doctors
         [HttpPut("UpdateDoctor")]
         public async Task<ActionResult<Doctor>> UpdateDoctor(Doctor doctor)
