@@ -74,7 +74,7 @@ namespace PatientRegistriationSystem.Controllers
         }
 
         //delete city
-        [HttpDelete("DeleteUser/{Id}")]
+        [HttpDelete("DeleteCity/{Id}")]
         public async Task<HttpStatusCode> DeleteCity(int Id)
         {
             var entity = new City()

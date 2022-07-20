@@ -23,5 +23,6 @@ namespace PatientRegistriationSystem.DTOs
         public virtual Photo Photo { get; set; }
         public virtual ICollection<Doctor> Doctors { get; set; }
         public virtual ICollection<Officer> Officers { get; set; }
+        public int Id { get; internal set; }
     }
 }

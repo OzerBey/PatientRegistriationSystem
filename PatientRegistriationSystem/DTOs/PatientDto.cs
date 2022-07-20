@@ -4,10 +4,10 @@
     {
         public int AddressId { get; set; }
         public int? NationalityId { get; set; }
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int PhotoId { get; set; }
-        public string Gender { get; set; }
-        public string PhoneNumber { get; set; }
+        public string? Gender { get; set; }
+        public string? PhoneNumber { get; set; }
         public DateTime DateOfBirth { get; set; }
 
         //    public virtual Address Address { get; set; }

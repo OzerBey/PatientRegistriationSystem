@@ -22,7 +22,9 @@ namespace PatientRegistriationSystem.Controllers
         [HttpPost("AddPhoto")]
         public async Task<HttpStatusCode> Add(PhotoDto photoDto)
         {
-            var photoEncrypt = Md5.MD5Hash(photoDto.Photo1);
+#pragma warning disable CS8604 // Possible null reference argument.
+            string? photoEncrypt = Md5.MD5Hash(text: photoDto.Photo1);
+#pragma warning restore CS8604 // Possible null reference argument.
             var entity = new Photo()
             {
                 Photo1 = photoEncrypt,
